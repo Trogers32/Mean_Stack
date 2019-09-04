@@ -59,7 +59,7 @@ function learn() {
 	var dojo = "burbank";
 	console.log(dojo);
 }
-console.log(dojo);
+console.log(dojo); 
 // 8
 // 9
 // 10
