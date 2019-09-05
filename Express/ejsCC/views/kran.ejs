@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <a href="#"><img src="<%=kran.u%>" alt=""></a>
+        <h3>Name: <%= kran.name %></h3>
+        <h4>Age: <%= kran.age %></h4>
+        <h4>Sleeping spots: <% for (x of kran.sleep) { %>
+                            <%= x %> <% } %></h4>
+        <hr>
+</body>
+</html>

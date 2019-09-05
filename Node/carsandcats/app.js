@@ -6,7 +6,7 @@ const server = http.createServer(function (request, response){
     
     // this is how we do routing:
     if(request.url === '/') {
-        fs.readFile('index.html', 'utf8', function (errors, contents){
+        fs.readFile('./views/index.html', 'utf8', function (errors, contents){
             response.writeHead(200, {'Content-Type': 'text/html'});  // send data about response
             response.write(contents);  //  send response body
             response.end(); // finished!
@@ -15,6 +15,55 @@ const server = http.createServer(function (request, response){
     else if(request.url === '/stylesheets/style.css'){
         fs.readFile('./stylesheets/style.css', 'utf8', function(errors, contents){
             response.writeHead(200, {'Content-type': 'text/css'});
+            response.write(contents);
+            response.end();
+        })
+    }
+    else if(request.url === '/cars'){
+        fs.readFile('./views/index.html', 'utf8', function (errors, contents){
+            response.writeHead(200, {'Content-Type': 'text/html'});  // send data about response
+            response.write(contents);  //  send response body
+            response.end(); // finished!
+        });
+    }
+    else if(request.url === '/cars/1'){
+        fs.readFile("./images/c1.jpg", function(errors, contents){
+            response.writeHead(200, {'Content-type': 'image/jpg'});
+            response.write(contents);
+            response.end();
+        })
+    }
+    else if(request.url === '/cars/2'){
+        fs.readFile("./images/c2.jpg", function(errors, contents){
+            response.writeHead(200, {'Content-type': 'image/jpg'});
+            response.write(contents);
+            response.end();
+        })
+    }
+    else if(request.url === '/cars/3'){
+        fs.readFile("./images/c3.jpg", function(errors, contents){
+            response.writeHead(200, {'Content-type': 'image/jpg'});
+            response.write(contents);
+            response.end();
+        })
+    }
+    else if(request.url === '/cars/4'){
+        fs.readFile("./images/c4.jpg", function(errors, contents){
+            response.writeHead(200, {'Content-type': 'image/jpg'});
+            response.write(contents);
+            response.end();
+        })
+    }
+    else if(request.url === '/cars/5'){
+        fs.readFile("./images/c5.jpg", function(errors, contents){
+            response.writeHead(200, {'Content-type': 'image/jpg'});
+            response.write(contents);
+            response.end();
+        })
+    }
+    else if(request.url === '/cars/6'){
+        fs.readFile("./images/c6.jpg", function(errors, contents){
+            response.writeHead(200, {'Content-type': 'image/jpg'});
             response.write(contents);
             response.end();
         })
