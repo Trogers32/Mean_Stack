@@ -1,0 +1,15 @@
+Navigate inside that folder in your terminal and type 
+npm init -y
+npm install express
+npm install ejs
+npm install express-session
+npm install axios  for AJAX/CORS
+npm install express-flash
+npm install ejs mongoose
+npm install mongodb
+npm install moment
+
+MONGO START
+C:\Program Files\MongoDB\Server\4.2\bin
+bash - ./mongod to start server
+new bash - ./mongo to connect to DB server
