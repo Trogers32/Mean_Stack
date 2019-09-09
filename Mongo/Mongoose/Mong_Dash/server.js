@@ -77,14 +77,12 @@ app.get('/animals/edit/:id', (req, res) => {
 });
 
 app.get('/animals/destroy/:id', (req, res) => {
-    var ender = Animals.findById( req.params.id );
-    ender.remove()
+    Animals.remove( {_id:req.params.id} )
         .then(res.redirect("/"))
 });
 
 app.post('/animals/update/:id', (req, res) => {
-    var ed = Animals.findById( req.params.id )
-    ed.update({$set:{name:req.body.name, kind:req.body.kind, desc:req.body.desc}})
+    Animals.update({_id:req.params.id},{$set:{name:req.body.name, kind:req.body.kind, desc:req.body.desc}})
         .then(res.redirect("/"))
         .catch(err => res.json(err));
 });
