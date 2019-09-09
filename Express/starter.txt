@@ -1,11 +1,11 @@
 Navigate inside that folder in your terminal and type 
 npm init -y
-npm install express
+npm install express ejs mongoose express-session axios express-flash mongodb moment
 npm install ejs
-npm install express-session
-npm install axios  for AJAX/CORS
-npm install express-flash
-npm install ejs mongoose
+npm install express-session	//////for session
+npm install axios  		//////for AJAX/CORS
+npm install express-flash  	//////used for error display
+npm install mongoose
 npm install mongodb
 npm install moment
 
@@ -13,3 +13,24 @@ MONGO START
 C:\Program Files\MongoDB\Server\4.2\bin
 bash - ./mongod to start server
 new bash - ./mongo to connect to DB server
+
+
+////////////////////SERVER.JS/////////////////////
+const express = require("express");
+const app = express();
+const mongoose = require('mongoose');
+const flash = require('express-flash');  //////for error display
+const session = require('express-session'); //////////IMPORTS
+
+app.use(express.static(__dirname + "/static"));
+app.use(flash());
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/views'); //////////STATIC FOLDERS
+app.use(express.urlencoded({extended: true}));
+
+app.use(session({
+    secret: 'keyboardkitteh', ///////////////////////SESSION COOKIE
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 60000 }
+}))
