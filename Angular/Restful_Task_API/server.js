@@ -14,6 +14,7 @@ app.use(express.static(__dirname + "/static"));
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/client/views'); 
 app.use(express.json()); 
+app.use(express.static( __dirname + '/public/dist/public' ));
 //////////STATIC FOLDERS////////// 
 
 ///////////////////////SESSION COOKIE///////////////////////
