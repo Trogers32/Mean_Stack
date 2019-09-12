@@ -1,0 +1,31 @@
+class Bike {
+   max_speed: number;
+   price: number;
+   miles: number;
+   constructor(price: number, max_speed: number, miles: number = 0) {
+      this.price = price;
+      this.max_speed = max_speed;
+      this.miles = miles;
+   }
+   displayInfo() {
+      console.log("Price: " + this.price + ", Max speed: " + this.max_speed + ", Miles: " + this.miles);
+        return this;
+    }
+   ride() {
+      this.miles += 10;
+      console.log("Riding...")
+        return this;
+   }
+   reverse() {
+      this.miles -= 5;
+      console.log("Reversing...")
+        return this;
+   }
+}
+
+let b1 = new Bike(12,25);
+let b2 = new Bike(5,25);
+let b3 = new Bike(8,25);
+b1.displayInfo().ride().ride().ride().reverse().displayInfo();
+b2.displayInfo().ride().ride().reverse().reverse().displayInfo();
+b3.displayInfo().reverse().reverse().reverse().displayInfo();

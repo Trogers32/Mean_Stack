@@ -19,8 +19,9 @@ module.exports = {
         .catch(err => res.json(err));
     },
     newTask: function(req, res) { //////add new Task
-        var tid = Task.create({title:req.body.title,description:req.body.description})
-        .then(res.redirect(`/${tid.id}`))
+        var tid = Task.create(req.body)
+        .then(data => res.json(data))
+        // .then(res.redirect(`/${tid.id}`))
         .catch(err => res.json(err));
     },
     rid: function(req, res) { /////remove Task

@@ -1,6 +1,6 @@
 Navigate inside that folder in your terminal and type 
 npm init -y
-npm install express ejs mongoose express-session axios express-flash mongodb moment
+npm install express ejs mongoose express-session axios express-flash mongodb moment body-parser
 npm install ejs
 npm install express-session	//////for session
 npm install axios  		//////for AJAX/CORS
@@ -8,11 +8,20 @@ npm install express-flash  	//////used for error display
 npm install mongoose
 npm install mongodb
 npm install moment
+npm install body-parser
 
 MONGO START
 C:\Program Files\MongoDB\Server\4.2\bin
 bash - ./mongod to start server
 new bash - ./mongo to connect to DB server
+
+
+
+//////////////////////////ANGULAR///////////////////////////
+ng new app_name
+ng build --watch
+ng g s http      ///create a service called http
+////////////////////////////////////////////////////////////
 
 
 ////////////////////SERVER.JS/////////////////////
