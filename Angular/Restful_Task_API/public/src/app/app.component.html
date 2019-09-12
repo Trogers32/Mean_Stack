@@ -36,19 +36,31 @@
     
   </a>
 </div>
-
-<div class="content" role="main">
-  <h3>Value of num is: {{tasks}}</h3>
+<div class="container mx-auto w-50 text-center">
+  <h1>Restful Tasks API</h1>
+  <button (click)="getTasksFromService()" class="btn btn-primary">Get all tasks!</button>
   <div *ngFor="let task of tasks">
-    <p>Title: {{task.title}}</p>
-    <p> Description: {{task.description}}</p>
+    <div class="row mt-3">
+      <p class="col-8">{{task.title}}</p>
+      <button (click)="getIndividualTask(task._id)" class="btn btn-primary col-4">Show task</button>
+    </div>
   </div>
-  <h3>Value of randNum is: {{randNum}}</h3>
-  <h3>{{str}}</h3>
-  <input type="text" [value]="first_name" />
-  <p *ngIf="loggedIn">You are logged in!</p>
-<p *ngFor="let snack of snacks">{{snack}}</p>
-<p *ngIf="snacks.length < 3">You need more snacks.</p>
+  
+  <div *ngFor="let task of currTask">
+    <h4>{{task.title}}</h4>
+    <h5>{{task.description}}</h5>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="content" role="main">
   <!-- Highlight Card -->
   <div class="card highlight-card card-small">
 

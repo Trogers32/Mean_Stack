@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
   snacks: string[];
   loggedIn: boolean;
   tasks: Object;
+  currTask: Object;
   title = 'Coding Dojo';
   constructor(private _httpService: HttpService){}
   // ngOnInit will run when the component is initialized, after the constructor method.
@@ -26,7 +27,8 @@ export class AppComponent implements OnInit {
     this.snacks = ["vanilla latte with skim milk", "brushed suede", "cookie"];
     this.loggedIn = true;
     this.tasks = [];
-    this.getTasksFromService();
+    this.currTask = [];
+    // this.getTasksFromService();
   }
   // Set the attribute tasks to be an array.
   getTasksFromService(){
@@ -38,5 +40,27 @@ export class AppComponent implements OnInit {
         this.tasks = data;
         console.log(this.tasks)
     });
+  }
+  getIndividualTask(id: string){
+    let observable = this._httpService.getITask(id);
+    observable.subscribe(data => {
+        console.log("Got our tasks!", data)
+        // In this example, the array of tasks is assigned to the key 'tasks' in the data object. 
+        // This may be different for you, depending on how you set up your Task API.
+        this.currTask = data;
+        console.log(this.currTask)
+    });
+  }
+  onButtonClick(): void { 
+    console.log(`Click event is working`);
+  }
+  onButtonClickParam(num: Number): void { 
+    console.log(`Click event is working with num param: ${num}`);
+  }
+  onButtonClickParams(num: Number, str: String): void { 
+    console.log(`Click event is working with num param: ${num} and str param: ${str}`);
+  }
+  onButtonClickEvent(event: any): void { 
+    console.log(`Click event is working with event: ${event}`);
   }
 }
