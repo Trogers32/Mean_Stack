@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { HttpService } from './http.service';
 
@@ -7,7 +7,14 @@ import { HttpService } from './http.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Coding Dojo';
   constructor(private _httpService: HttpService){}
+  // ngOnInit will run when the component is initialized, after the constructor method.
+  ngOnInit(){
+    this.getTasksFromService();
+  }
+  getTasksFromService(){
+    this._httpService.getTasks();
+  }
 }
