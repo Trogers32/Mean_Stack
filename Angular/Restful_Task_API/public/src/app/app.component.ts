@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { HttpService } from './http.service';
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -8,27 +9,19 @@ import { HttpService } from './http.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  num: number;
-  randNum: number;
-  str: string;
-  first_name: string;
-  snacks: string[];
-  loggedIn: boolean;
+  show:boolean = false;
+  tshow:boolean = false;
   tasks: Object;
   currTask: Object;
+  edTask: any;
+  newTask: any;
   title = 'Coding Dojo';
   constructor(private _httpService: HttpService){}
   // ngOnInit will run when the component is initialized, after the constructor method.
   ngOnInit(){
-    this.num = 7;
-    this.randNum = Math.floor( (Math.random()  * 2 ) + 1);
-    this.str = 'Hello Angular Developer!';
-    this.first_name = 'Alpha';
-    this.snacks = ["vanilla latte with skim milk", "brushed suede", "cookie"];
-    this.loggedIn = true;
     this.tasks = [];
     this.currTask = [];
-    // this.getTasksFromService();
+    this.newTask = { title: "", description: "" };
   }
   // Set the attribute tasks to be an array.
   getTasksFromService(){
@@ -43,24 +36,44 @@ export class AppComponent implements OnInit {
   }
   getIndividualTask(id: string){
     let observable = this._httpService.getITask(id);
+    console.log(observable)
     observable.subscribe(data => {
         console.log("Got our tasks!", data)
         // In this example, the array of tasks is assigned to the key 'tasks' in the data object. 
         // This may be different for you, depending on how you set up your Task API.
         this.currTask = data;
         console.log(this.currTask)
+        this.tshow = true;
     });
   }
-  onButtonClick(): void { 
-    console.log(`Click event is working`);
+  removeTask(id: string){
+    let observable = this._httpService.removeT(id);
+    observable.subscribe(data => {
+      console.log("Got our tasks!", data)
+      this.getTasksFromService();
+    });
   }
-  onButtonClickParam(num: Number): void { 
-    console.log(`Click event is working with num param: ${num}`);
+  onSubmit() {
+    let observable = this._httpService.addTask(this.newTask);
+    observable.subscribe(data => {
+      console.log("Got our tasks!", data)
+      this.newTask = { title: "", description: "" }
+      this.getTasksFromService();
+    });
   }
-  onButtonClickParams(num: Number, str: String): void { 
-    console.log(`Click event is working with num param: ${num} and str param: ${str}`);
+  toggle(task) {
+    this.edTask = {_id: task._id, title: task.title, description: task.description}
+    this.tshow = false;
+    this.show = true;
   }
-  onButtonClickEvent(event: any): void { 
-    console.log(`Click event is working with event: ${event}`);
+  edit(){
+    console.log(this.edTask, "first");
+    let observable = this._httpService.editTask(this.edTask);
+      observable.subscribe(data => {
+          console.log("Editing...", data)
+          this.getTasksFromService();
+      });
+    this.show = false;
+    // this.edTask = { title: "", description: "" };
   }
 }

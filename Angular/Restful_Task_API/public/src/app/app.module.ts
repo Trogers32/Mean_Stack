@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HttpService } from './http.service'; //////import service here
 import { HttpClientModule } from '@angular/common/http'; ////allows http requests
+import { FormsModule } from '@angular/forms'; // <-- import FormsModule.
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http'; ////allows http request
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [HttpService], /////add service here
   bootstrap: [AppComponent]

@@ -9,9 +9,6 @@ const bodyParser = require("body-parser");
 
 //////////STATIC FOLDERS//////////
 app.use(flash());
-app.use(express.static(__dirname + "/static"));
-app.set('view engine', 'ejs');
-app.set('views', __dirname + '/client/views'); 
 app.use(express.json()); 
 app.use(express.static( __dirname + '/public/dist/public' )); /////COMMENT OUT IF TESTING VIA POSTMAN
 app.use(bodyParser.urlencoded({useNewUrlParser: true}));
@@ -25,7 +22,6 @@ app.use(session({
     cookie: { maxAge: 60000 }
 }))
 ///////////////////////SESSION COOKIE///////////////////////
-
 
 /////////////////////////ROUTES AND FUNCTIONS/////////////////////////////
 

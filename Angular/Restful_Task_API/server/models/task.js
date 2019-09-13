@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 //////////////init DB//////////////
 mongoose.connect('mongodb://localhost/task_DB', {useNewUrlParser: true});
 const TaskSchema = new mongoose.Schema({ /////////messages///////////
-    title: {type: String, required: [true, "A name is required"]},
+    title: {type: String, required: [true, "A title is required"]},
     description: {type: String, default:""},
     complete: {type: Boolean, default:false},
 },{timestamps:true})

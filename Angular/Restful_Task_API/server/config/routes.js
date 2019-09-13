@@ -18,7 +18,7 @@ module.exports = function(app){
     app.put('/tasks/:id', (req, res) => {
         controller.upTask(req,res);
     });
-    app.get('/remove/:id', (req, res) => {
+    app.delete('/remove/:id', (req, res) => {
         controller.rid(req,res);
     });
     app.use(function(req,res) { 

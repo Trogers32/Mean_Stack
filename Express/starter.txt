@@ -22,10 +22,9 @@ new bash - ./mongo to connect to DB server
 //////////////////////////ANGULAR///////////////////////////
 	////Within express root folder////
 ng new app_name
-ng build --watch
+ng build --watch  ////// can use: ng serve --port 8000 /////add port if needed
 ng g s http      ///create a service called http
 npm install bootstrap jquery popper    ///////install bootstrap dependencies
-
 
 /////////////////in angular.json add: for bootstrap use
  "styles": [
@@ -33,3 +32,17 @@ npm install bootstrap jquery popper    ///////install bootstrap dependencies
 	"node_modules/bootstrap/dist/css/bootstrap.min.css"
   ],
 ////////////////////////////////////////////////////////////
+///////////////app.module.ts
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    FormsModule,
+  ],
+  providers: [HttpService], /////add service here
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
