@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<body>
+    <div class="container w-50 mx-auto mt-5">
+        <div>
+            <form action="/message" method="POST">
+                <p><label for="">Name:</label></p>
+                <input type="text" name="name"><br><br>
+                <p><label for="">Message:</label></p>
+                <textarea name="content" cols="50" rows="5"></textarea>
+                <button class="d-block">Post Message</button>
+            </form>
+        </div>
+<!-- based on the structure of your messages, determine how to display them -->
+<% if(messages.registration) { %>
+     <% for (var x of messages.registration) { %>
+      <h3><%= x %></h3>
+     <% } %>
+ <% } %>
+        <div>
+            <% for (ani of mess) { %>
+                <div class="border border-dark">
+                    <p><%= ani.name %></p>
+                    <p><%= ani.content %></p>
+                    <% for (con of ani.comm) { %>
+                        <div class="border border-dark">
+                        <p><%= con.name %></p>
+                        <p><%= con.content %></p>
+                        </div>
+                    <% } %>
+                </div>
+                
+                <div class="border border-light">
+                    <form action="/comment/<%=ani.id%>" method="POST">
+                        <label for="">Name:</label>
+                        <input type="text" name="name"><br><br>
+                        <p><label for="">Message:</label></p>
+                        <textarea name="content" cols="50" rows="5"></textarea>
+                        <button>Post Comment</button>
+                    </form>
+                </div>
+            <% } %>
+        </div>
+    </div>
+
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
