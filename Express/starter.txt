@@ -16,7 +16,7 @@ MONGO START
 C:\Program Files\MongoDB\Server\4.2\bin
 bash - ./mongod to start server
 new bash - ./mongo to connect to DB server
-
+nodemon server.js
 
 
 //////////////////////////ANGULAR///////////////////////////
@@ -25,6 +25,11 @@ ng new app_name
 ng build --watch  ////// can use: ng serve --port 8000 /////add port if needed
 ng g s http      ///create a service called http
 npm install bootstrap jquery popper    ///////install bootstrap dependencies
+
+
+
+array.reduce()
+array.map()
 
 /////////////////in angular.json add: for bootstrap use
  "styles": [

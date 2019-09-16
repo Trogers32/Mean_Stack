@@ -1,23 +1,26 @@
 
 
-const controller = require("../controllers/tasks.js")
+const controller = require("../controllers/cakes.js")
 
 module.exports = function(app){
     app.get('/', (req, res) => {
         controller.index(req,res);
     });
-    app.get('/tasks', (req, res) => {
+    app.get('/cakes', (req, res) => {
         controller.index(req,res);
     });
-    app.post('/tasks', (req, res) => {
-        controller.newTask(req,res);
+    app.post('/cakes', (req, res) => {
+        controller.newCake(req,res);
     });
-    app.get('/tasks/:id', (req, res) => {
-        controller.getTask(req,res);
+    app.post('/cakes/:id', (req, res) => { /////new comment
+        controller.newComment(req,res);
     });
-    app.put('/tasks/:id', (req, res) => {
-        controller.upTask(req,res);
+    app.get('/cakes/:id', (req, res) => {
+        controller.getCake(req,res);
     });
+    // app.put('/cakes/:id', (req, res) => {
+    //     controller.upCake(req,res);
+    // });
     app.delete('/remove/:id', (req, res) => {
         controller.rid(req,res);
     });
