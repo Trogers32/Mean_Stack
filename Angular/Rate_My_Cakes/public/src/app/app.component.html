@@ -38,8 +38,13 @@
 </div>
 <div class="container mx-auto w-50 text-center">
   <h1>Restful cakes API</h1>
+  <div *ngIf="errors">
+    <div *ngFor="let err of errors">
+        {{err}}
+      </div>
+  </div>
   <div class="container mx-auto text-center m-4">
-    <form (submit)="onSubmit()">
+    <form (submit)="createCake()">
       <div class="row">
         <span class="col-2"></span>
         <label for=""class="col-4">Baker:</label>
@@ -54,10 +59,11 @@
     </form>
   </div>
   <button (click)="getCakesFromService()" class="btn btn-primary mb-4">Get all cakes!</button>
+  <div style="height:400px;overflow:auto;">
   <div *ngFor="let cake of cakes">
     <div class="row">
       <img  (click)="getIndividualCake(cake._id)" src="{{cake.imageURL}}" alt="" class="mx-auto" style="height:150px; width: 150px;">
-      <form [formGroup]="commentForm" (ngSubmit)="onSubmit(newComment.value)" class="col" >
+      <form [formGroup]="commentForm" (ngSubmit)="onSubmit(commentForm.value, cake._id)" class="col" >
         <select class="d-block" formControlName="rate">
           <option [ngValue]="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
           <option [ngValue]="4">&#9733;&#9733;&#9733;&#9733;&#9734;</option>
@@ -65,29 +71,13 @@
           <option [ngValue]="2">&#9733;&#9733;&#9734;&#9734;&#9734;</option>
           <option [ngValue]="1">&#9733;&#9734;&#9734;&#9734;&#9734;</option>
         </select>
-        <textarea cols="30" rows="3" class="d-block" placeholder="Comment here."  formControlName="comment"></textarea>
-        <input type="submit" value="Submit comment" class="btn btn-primary d-block"/>
+        <textarea cols="30" rows="3" class="d-block" placeholder="Comment here." formControlName="comment"></textarea>
+        <button type="submit" class="btn btn-primary d-block">Submit comment</button>
       </form>
     </div>
   </div>
-  
-  <ng-container *ngIf="currCake">
-      <div class="row mt-4">
-        <div>
-          <label>Baker:</label>{{currCake[0].baker}}
-          <img src="{{currCake[0].imageURL}}" alt="" class="d-block" style="height:200px; width: 200px;">
-        </div>
-        <label>Comments:</label>
-        <div *ngFor="let com of currCake[0].rating">
-          <h6 *ngIf="com.rate == 1">&#9733;&#9734;&#9734;&#9734;&#9734;</h6>
-          <h6 *ngIf="com.rate == 2">&#9733;&#9733;&#9734;&#9734;&#9734;</h6>
-          <h6 *ngIf="com.rate == 3">&#9733;&#9733;&#9733;&#9734;&#9734;</h6>
-          <h6 *ngIf="com.rate == 4">&#9733;&#9733;&#9733;&#9733;&#9734;</h6>
-          <h6 *ngIf="com.rate == 5">&#9733;&#9733;&#9733;&#9733;&#9733;</h6>
-          <h6>{{com.comment}}</h6>
-        </div>
-      </div>
-  </ng-container>
+</div>
+  <app-cake-details *ngIf="currCake" [currCake]="currCake"></app-cake-details>
 </div>
 
   <svg id="clouds" alt="Gray Clouds Background" xmlns="http://www.w3.org/2000/svg" width="2611.084" height="485.677" viewBox="0 0 2611.084 485.677">

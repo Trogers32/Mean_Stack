@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HttpService } from './http.service'; //////import service here
 import { HttpClientModule } from '@angular/common/http'; ////allows http requests
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // <-- import FormsModule.
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CakeDetailsComponent } from './cake-details/cake-details.component'; // <-- import FormsModule.
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CakeDetailsComponent
   ],
   imports: [
     BrowserModule,

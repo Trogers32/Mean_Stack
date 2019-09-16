@@ -20,8 +20,9 @@ export class HttpService {
     console.log(newcake)
     return this._http.post('/cakes', newcake)
   }
-  addComment(newComment){
-    return this._http.post(`/cakes/${newComment._id}`, newComment) //////use session comment variable
+  addComment(newComm){
+    console.log("Add Comment", newComm)
+    return this._http.post(`/cakes/${newComm._id}`, newComm) //////use session comment variable
   }
   removeC(id: string){
     console.log(`/remove/${id}`)

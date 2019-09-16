@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { HttpService } from './http.service';
 import { NgModel } from '@angular/forms';
@@ -13,11 +13,12 @@ export class AppComponent implements OnInit {
   cakes: Object;
   currCake: any;
   newCake: any;
-  newComment: any;
   commentForm;
   default = 5;
+  errors;
   constructor(private _httpService: HttpService, private formBuilder: FormBuilder){
     this.commentForm = this.formBuilder.group({
+      _id: "",
       rate: "", 
       comment: ""
     });
@@ -27,7 +28,6 @@ export class AppComponent implements OnInit {
   ngOnInit(){
     this.cakes = [];
     this.newCake = { baker: "", imageURL: "" };
-    this.newComment = {rating: "", comment: ""}
   }
   getCakesFromService(){
     let observable = this._httpService.getCakes();
@@ -37,19 +37,38 @@ export class AppComponent implements OnInit {
         console.log(this.cakes)
     });
   }
-  getIndividualCake(id: string){
-    let observable = this._httpService.getICake(id);
-    console.log(observable)
-    observable.subscribe(data => {
-        console.log("Got our cakes!", data)
-        this.currCake = data;
-    });
-  }
-  onSubmit(commentData) {
+  onSubmit(commentData, cake) {
+    console.log(cake)
+    commentData._id = cake;
     let observable = this._httpService.addComment(commentData);
     observable.subscribe(data => {
       console.log("Got our cakes!", data)
+      this.commentForm.reset();
+      this.commentForm.controls['rate'].setValue(this.default, {onlySelf: true});
       this.getCakesFromService();
+    });
+  }
+  createCake() {
+    let observable = this._httpService.addCake(this.newCake);
+    observable.subscribe(data => {
+      console.log("Got our cakes!", data)
+      if(data['errors']){
+        this.errors = data['message'].split(",");
+        console.log(this.errors)
+      } else {
+        this.errors = null;
+      }
+      this.getCakesFromService();
+    });
+  }
+  getCake(id) {
+    this.currCake = id;
+  }
+  getIndividualCake(id: string){
+    let observable = this._httpService.getICake(id);
+    observable.subscribe(data => {
+        console.log("Got our cakes!", data)
+        this.currCake = data;
     });
   }
 }

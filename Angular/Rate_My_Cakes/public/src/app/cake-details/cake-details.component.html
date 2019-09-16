@@ -1,0 +1,17 @@
+<ng-container>
+    <div class="row mt-4">
+        <div>
+            <label>Baker:</label>{{currCake[0].baker}}
+            <img src="{{currCake[0].imageURL}}" alt="" class="d-block" style="height:200px; width: 200px;">
+        </div>
+        <label>Comments:</label>
+        <div *ngFor="let com of currCake[0].rating">
+            <h6 *ngIf="com.rate == 1">&#9733;&#9734;&#9734;&#9734;&#9734;</h6>
+            <h6 *ngIf="com.rate == 2">&#9733;&#9733;&#9734;&#9734;&#9734;</h6>
+            <h6 *ngIf="com.rate == 3">&#9733;&#9733;&#9733;&#9734;&#9734;</h6>
+            <h6 *ngIf="com.rate == 4">&#9733;&#9733;&#9733;&#9733;&#9734;</h6>
+            <h6 *ngIf="com.rate == 5">&#9733;&#9733;&#9733;&#9733;&#9733;</h6>
+            <h6>{{com.comment}}</h6>
+        </div>
+    </div>
+</ng-container>

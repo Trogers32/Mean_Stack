@@ -19,6 +19,7 @@ module.exports = {
         .catch(err => res.json(err));
     },
     newCake: function(req, res) { //////add new Cake
+        console.log(req.body)
         Cake.create(req.body)
         .then(data => res.json(data))
         .catch(err => res.json(err));
