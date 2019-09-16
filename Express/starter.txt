@@ -1,3 +1,4 @@
+////////////////Express/Mongo starter///////////////////////
 Navigate inside that folder in your terminal and type 
 npm init -y
 npm install express ejs mongoose express-session axios express-flash mongodb moment body-parser

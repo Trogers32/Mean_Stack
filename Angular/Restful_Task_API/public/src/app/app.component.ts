@@ -67,7 +67,6 @@ export class AppComponent implements OnInit {
     this.show = true;
   }
   edit(){
-    console.log(this.edTask, "first");
     let observable = this._httpService.editTask(this.edTask);
       observable.subscribe(data => {
           console.log("Editing...", data)
