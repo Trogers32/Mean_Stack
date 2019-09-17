@@ -24,7 +24,10 @@ module.exports = function(app){
     app.delete('/remove/:id', (req, res) => {
         controller.rid(req,res);
     });
-    app.use(function(req,res) { 
-        res.redirect('/'); 
-    }); 
+    app.all("*", (req,res,next) => {
+        res.sendFile(path.resolve("../../public/dist/public/index.html"))
+    });
+    // app.use(function(req,res) { 
+    //     res.redirect('/'); 
+    // }); 
 }    

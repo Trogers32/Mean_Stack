@@ -2,7 +2,7 @@
 Create a project folder
 Navigate inside that folder in your terminal and type 
 npm init -y
-npm install express ejs mongoose express-session axios express-flash mongodb moment body-parser
+npm install express mongoose mongodb body-parser
 
 ////all installs can be put into a single line
 npm install ejs
@@ -23,9 +23,10 @@ nodemon server.js
 
 //////////////////////////ANGULAR///////////////////////////
 	////Within express root folder////
-ng new app_name
+ng new app_name --routing
 ng build --watch  ////// can use: ng serve --port 8000 /////add port if needed
 ng g s http      ///create a service called http
+ng g c component_name   ////create component
 				/////////////////////////////////////////////////////////////////////////////////npm install bootstrap jquery popper    ///////install bootstrap dependencies
 
 
