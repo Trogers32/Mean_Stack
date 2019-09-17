@@ -1,0 +1,27 @@
+<div>
+        <h1>Edit Product</h1>
+        
+        <form (submit)="createProduct()">
+            <div class="row">
+                <span class="col-2"></span>
+                <label for=""class="col-4">Title:</label>
+                <input type="text" name="newProduct.title" [(ngModel)]="newProduct.title" />
+            </div>
+            <div class="row">
+                <span class="col-2"></span>
+                <label for=""class="col-4">Price:</label>
+                <input type="text" name="newProduct.price" [(ngModel)]="newProduct.price" />
+            </div>
+            <div class="row mb-3">
+                <span class="col-2"></span>
+                <label for=""class="col-4">Image URL:</label>
+                <input type="text" name="newProduct.imageURL" [(ngModel)]="newProduct.imageURL" />
+            </div>
+            <input type="submit" value="Submit edit" class="btn btn-primary"/>
+        </form>
+        <div *ngIf="errors">
+            <div *ngFor="let err of errors" class="text-danger">
+                {{err}}
+            </div>
+        </div>
+    </div>

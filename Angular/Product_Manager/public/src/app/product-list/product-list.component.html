@@ -1,0 +1,12 @@
+
+<div *ngFor="let prod of products" class="d-inline-block m-2">
+    <div class="text-center">
+        <img src="{{prod.imageURL}}" alt="No picture provided">
+        <h5>{{prod.title}}</h5>
+        <h5>${{prod.price}}</h5>
+        <div class="mx-auto">
+            <button [routerLink]="['/ProductList/Edit', prod._id]">Edit Product</button>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>

@@ -26,12 +26,12 @@ module.exports = {
         .then(data => res.json(data))
         .catch(err => res.json(err));
     },
-    // upProduct: function(req, res) {
-    //     console.log(req.body)
-    //     Product.updateOne({_id:req.params.id},{$set:{title:req.body.baker,imageURL:req.body.imageURL}},{runValidators:true})
-    //     .then(data => res.json(data))
-    //     .catch(err => res.json(err));
-    // },
+    upProduct: function(req, res) {
+        console.log(req.body)
+        Product.updateOne({_id:req.params.id},{$set:{title:req.body.title,price:req.body.price, imageURL:req.body.imageURL}},{runValidators:true})
+        .then(data => res.json(data))
+        .catch(err => res.json(err));
+    },
     getProduct: function(req, res) { ///get single Product info
         Product.find({_id:req.params.id})
         .then(data => res.json(data))

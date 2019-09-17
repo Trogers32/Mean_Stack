@@ -15,9 +15,9 @@ module.exports = function(app){
     app.get('/products/:id', (req, res) => {
         controller.getProduct(req,res); 
     });
-    // app.put('/products/:id', (req, res) => {
-    //     controller.upProduct(req,res);
-    // });
+    app.put('/products/:id', (req, res) => {
+        controller.upProduct(req,res);
+    });
     app.delete('/remove/:id', (req, res) => {
         controller.rid(req,res);
     });
