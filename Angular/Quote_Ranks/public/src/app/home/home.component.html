@@ -1,0 +1,17 @@
+
+
+<div class="text-left ml-5 mb-2">
+    <button [routerLink]="['/AuthorCreation']">Add Author</button>
+</div>
+<table class="border border-dark mx-auto">
+    <tr  *ngFor="let auth of authors" style="width:400px; margin:0;padding: 0;">
+        <td class="border border-dark" style="height:50px; width:200px">
+            <h5>{{auth.name}}</h5>
+        </td>
+        <td class="border border-dark" style="height:50px; width:200px">
+            <button [routerLink]="['/AuthorQuotes/', auth._id]">View Quotes</button>
+            <button [routerLink]="['/Author/Edit', auth._id]">Edit Author</button>
+        </td>
+    </tr>
+</table>
+<router-outlet></router-outlet>

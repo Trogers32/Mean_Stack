@@ -1,0 +1,22 @@
+<div>
+    <div class="text-left ml-5 mb-2">
+        <button [routerLink]="['/Home']">Home</button>
+    </div>
+    
+    <form (submit)="createAuthor()">
+        <div class="row m-3">
+            <span class="col-2"></span>
+            <label for=""class="col-4">Author Name:</label>
+            <input type="text" name="editAuthor.name" [(ngModel)]="editAuthor.name" [value]="editAuthor.name" minlength="3" required #name="ngModel"/>
+        </div>
+        <div *ngIf="name.errors" class="text-center">
+            <p class="text-danger mx-auto">Author name must be at least 3 characters long.</p>
+        </div>
+        <input type="submit" value="Submit author" class="btn btn-primary"/>
+    </form>
+    <div *ngIf="errors">
+        <div *ngFor="let err of errors" class="text-danger">
+            {{err}}
+        </div>
+    </div>
+</div>

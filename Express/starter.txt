@@ -1,3 +1,8 @@
+getting wifi password from other computer that is logged in
+netsh wlan show profile WiFi-name key=clear
+
+
+
 ////////////////Express/Mongo starter///////////////////////
 Create a project folder
 Navigate inside that folder in your terminal and type 

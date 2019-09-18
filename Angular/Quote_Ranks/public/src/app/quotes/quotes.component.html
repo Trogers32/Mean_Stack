@@ -1,0 +1,22 @@
+
+
+<div class="text-left ml-5 mb-2">
+    <button [routerLink]="['/Author/', currAuthor._id]">Add Quote</button>
+</div>
+<h4>Quotes by {{currAuthor.name}}</h4>
+<table class="mx-auto border border-dark">
+    <tr class="border border-dark">
+        <td><strong><u>Quote</u></strong></td>
+        <td><strong><u>Votes</u></strong></td>
+        <td><strong><u>Actions Available</u></strong></td>
+    </tr>
+    <tr *ngFor="let quote of currAuthor.quotes" class="border border-dark">
+        <td style="width: 100px;">"{{quote.content}}"</td>
+        <td style="width: 50px;">{{quote.rating}}</td>
+        <td>
+            <button (click)="upVote(quote._id)">Vote Up</button>
+            <button (click)="downVote(quote._id)">Vote Down</button>
+            <button (click)="removeQuote(quote._id)">Delete</button>
+        </td>
+    </tr>
+</table>

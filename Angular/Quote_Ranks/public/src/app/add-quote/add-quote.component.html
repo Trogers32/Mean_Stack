@@ -1,0 +1,20 @@
+<div>
+    <div class="text-left ml-5 mb-2">
+        <button [routerLink]="['/Home']">Home</button>
+    </div>
+    
+    <h1>Provide a quote by {{currAuthor.name}}</h1>
+    <form (submit)="createQuote()">
+        <div class="row m-3">
+            <span class="col-2"></span>
+            <label for=""class="col-4">Content:</label>
+            <input type="text" name="newQuote.content" [(ngModel)]="newQuote.content" />
+        </div>
+        <input type="submit" value="Submit author" class="btn btn-primary"/>
+    </form>
+    <div *ngIf="errors">
+        <div *ngFor="let err of errors" class="text-danger">
+            {{err}}
+        </div>
+    </div>
+</div>
