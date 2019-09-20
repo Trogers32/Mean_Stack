@@ -1,20 +1,19 @@
- 
+  
 const mongoose = require('mongoose');
 
 
 //////////////init DB//////////////
-mongoose.connect('mongodb://localhost/Author_DB', {useNewUrlParser: true});
-const QuoteSchema = new mongoose.Schema({ /////////Authors///////////
-    content: {type: String, required: [true, "A quote is required"], minlength:[3, "Quotes must be at least 3 characters long."]},
-    rating: {type: Number, default:0},
-},{timestamps:true})
-const AuthorSchema = new mongoose.Schema({ /////////Authors///////////
-    name: {type: String, required: [true, "An author name is required"], minlength:[3, "Author name must be at least 3 characters long."]},
-    quotes: [QuoteSchema],
+mongoose.connect('mongodb://localhost/Pet_DB', {useNewUrlParser: true});
+const PetSchema = new mongoose.Schema({ /////////Pets///////////
+    name: {type: String, required: [true, "An pet name is required"], minlength:[3, "Pet name must be at least 3 characters long."]},
+    petType: {type: String, required: [true, "An pet type is required"], minlength:[3, "Pet type must be at least 3 characters long."]},
+    description: {type: String, required: [true, "An description is required"], minlength:[3, "Description must be at least 3 characters long."]},
+    skills: {type: Array},
+    likes: {type: Number, default:0}
 },{timestamps:true})
    // create an object to that contains methods for mongoose to interface with MongoDB
-const Author = mongoose.model('Author', AuthorSchema);
+const Pet = mongoose.model('Pet', PetSchema);
 //////////////init DB//////////////
 
 ///////EXPORT////////
-module.exports = Author;
+module.exports = Pet;
