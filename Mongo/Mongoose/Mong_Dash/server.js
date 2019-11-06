@@ -53,7 +53,7 @@ app.get('/animals/new', (req, res) => {
 app.get('/animals/:id', (req, res) => {
     Animals.findById( req.params.id )
         .then(data => res.render("indi", {anis: data, moment: moment}))
-        .catch(err => res.json(err));
+        .catch(err => res.json(err)); 
 });
 
 app.post('/add', (req, res) => {
